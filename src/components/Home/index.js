@@ -19,8 +19,14 @@ function Home() {
             className="py-2 w-3/4 mx-auto absolute rounded-lg bg-white text-black bottom-2 left-7 cursor-pointer"
           />
         </div>
-        <div className="h-56 w-56 bg-gray-100 drop-shadow-lg">
+        <div className="h-56 w-56 bg-gray-100 relative drop-shadow-lg">
           Test my dumb Form
+          <input
+            type="button"
+            value="TRY"
+            onClick={() => navigate("dumpForm")}
+            className="py-2 w-3/4 mx-auto absolute rounded-lg bg-white text-black bottom-2 left-7 cursor-pointer"
+          />
         </div>
       </div>
     </div>
