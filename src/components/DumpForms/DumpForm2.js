@@ -1,4 +1,5 @@
 import { DispatchContext, FormContext } from "context/dumpFormContext";
+import { FORM_3 } from "helpers/automateHelper";
 import React, {useContext} from "react";
 import { useForm } from "react-hook-form";
 import FormAction from "./FormAction";
@@ -7,17 +8,16 @@ function DumpForm2({goBack}) {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const form = useContext(FormContext);
   const dispatchContext = useContext(DispatchContext);
-  const { age } = form;
+  const { age, currentForm } = form;
 
   const onSubmit = (data) => {
     const newForm = {...form, ...data};
-    newForm.formPile.push('dumpForm2');
-    newForm.currentForm = 'dumpForm3';
+    newForm.formPile.push(currentForm);
+    newForm.currentForm = FORM_3;
     dispatchContext(newForm);
   };
 
@@ -34,6 +34,7 @@ function DumpForm2({goBack}) {
         <input
           type="number"
           defaultValue={age}
+          autoFocus
           {...register("age", { required: true, min: 18 })}
           className="mt-1 px-3 py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
           placeholder="18"

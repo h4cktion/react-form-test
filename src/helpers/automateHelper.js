@@ -1,9 +1,10 @@
-
-// export const automate = [
-//   { name: "dumpForm1Next", from: "dumpForm1", to: "dumpForm2" },
-//   { name: "dumpForm2Next1", from: "dumpForm2", to: "dumpForm3" },
-//   { name: "dumpForm2Next2", from: "dumpForm2", to: "dumpForm3bis" },
-// ];
+const FORM_1='form1';
+const FORM_2='form2';
+const FORM_3='form3';
+const FORM_4='form4';
+const FORM_4bis='form4bis';
+const FORM_5='form5';
+const FORM_FINAL='formFinal';
 
 const goBack = (formData) => {
     const { formPile, currentForm } = formData;
@@ -14,5 +15,12 @@ const goBack = (formData) => {
 }
 
 module.exports = {
-    goBack
+    goBack,
+    FORM_1,
+    FORM_2,
+    FORM_3,
+    FORM_4,
+    FORM_4bis,
+    FORM_5,
+    FORM_FINAL,
 };
