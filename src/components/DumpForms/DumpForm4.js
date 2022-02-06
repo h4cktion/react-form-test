@@ -1,13 +1,14 @@
 import { DispatchContext, FormContext } from "context/dumpFormContext";
+import { saveForm } from "context/dumpFormContext/actions";
 import { FORM_5 } from "helpers/automateHelper";
 import React, { useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
 import FormAction from "./FormAction";
 
 function DumpForm4({ goBack }) {
-  const form = useContext(FormContext);
+  const state = useContext(FormContext);
   const dispatchContext = useContext(DispatchContext);
-  const { currentForm, movie } = form;
+  const { currentForm, form:{movie} } = state;
 
   const defaultValues = {
     movie,
@@ -20,16 +21,13 @@ function DumpForm4({ goBack }) {
   } = useForm({ defaultValues });
 
   const onSubmit = (data) => {
-    const newForm = { ...form, ...data };
-    newForm.formPile.push(currentForm);
-    newForm.currentForm = FORM_5;
-    dispatchContext(newForm);
+    saveForm(data, FORM_5, state, currentForm, dispatchContext);
   };
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-1/3 m-auto mt-32 flex flex-col p-5"
+      className="w-1/3 m-auto mt-32 flex flex-col p-5 animate-fade-in-down"
     >
       <label className="block text-left mb-5">
         <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
@@ -56,7 +54,7 @@ function DumpForm4({ goBack }) {
           <span className="text-xs text-red-500">You must choose your best movie.</span>
         )}
       </label>
-      <FormAction goBack={goBack} />
+      <FormAction goBack={goBack} currentForm={currentForm} />
     </form>
   );
 }

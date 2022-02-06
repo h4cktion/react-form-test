@@ -1,6 +1,12 @@
 import { DispatchContext, FormContext } from "context/dumpFormContext";
+import { saveForm } from "context/dumpFormContext/actions";
+import {
+  ADD_IN_HISTORY,
+  SAVE_FORM,
+  SET_CURRENT_FORM,
+} from "context/dumpFormContext/actionsType";
 import { FORM_2 } from "helpers/automateHelper";
-import React, {useContext} from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import FormAction from "./FormAction";
 
@@ -10,22 +16,26 @@ function DumpForm({ goBack }) {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const form = useContext(FormContext);
-  const dispatchContext = useContext(DispatchContext);
-  const { gamerTag, currentForm } = form;
+  const state = useContext(FormContext);
+  const dispatch = useContext(DispatchContext);
+  const {
+    form: { gamerTag },
+    currentForm,
+    animation,
+  } = state;
 
   const onSubmit = (data) => {
-    const newForm = {...form, ...data};
-    newForm.formPile.push(currentForm);
-    newForm.currentForm = FORM_2;
-    dispatchContext(newForm);
+    saveForm(data, FORM_2, state, currentForm, dispatch);
   };
 
-  console.log('form context', form);
+  // const onSubmit = (data) => {
+  //   dispatch(saveForm(data, FORM_2, state, currentForm));
+  // };
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-1/3 m-auto mt-32 flex flex-col p-5"
+      className={`w-1/3 m-auto mt-32 flex flex-col p-5 ${animation}`}
     >
       <label className="block text-left mb-5">
         <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
@@ -34,11 +44,11 @@ function DumpForm({ goBack }) {
         <input
           type="text"
           autoFocus
-          defaultValue={gamerTag || ''}
+          defaultValue={gamerTag || ""}
           {...register("gamerTag", { required: true })}
           className={`mt-1 px-3 py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400
            focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1
-           ${errors.gamerTag && 'border-red-500'}
+           ${errors.gamerTag && "border-red-500"}
            `}
           placeholder="HACKTION"
         />
@@ -46,8 +56,8 @@ function DumpForm({ goBack }) {
           <span className="text-xs text-red-500">Gamer Tag required</span>
         )}
       </label>
-      
-      <FormAction goBack={goBack} />
+
+      <FormAction goBack={goBack} currentForm={currentForm} />
     </form>
   );
 }

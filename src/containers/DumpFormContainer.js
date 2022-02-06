@@ -6,18 +6,20 @@ import DumpForm4bis from "components/DumpForms/DumpForm4bis";
 import DumpForm5 from "components/DumpForms/DumpForm5";
 import DumpFormFinal from "components/DumpForms/DumpFormFinal";
 import { DispatchContext, FormContext } from "context/dumpFormContext";
+import { GO_BACK } from "context/dumpFormContext/actionsType";
 import { FORM_1, FORM_2, FORM_3, FORM_4, FORM_4bis, FORM_5, FORM_FINAL, goBack } from "helpers/automateHelper";
 import React, { useContext } from "react";
 
 function DumpFormContainer() {
-  const form = useContext(FormContext);
+  const state = useContext(FormContext);
   const dispatchContext = useContext(DispatchContext);
-  const { currentForm } = form;
+  const { currentForm } = state;
 
   const goPreviewForm = () => {
-    const { currentForm: lastForm, formPile } = goBack(form);
-    const newForm = { ...form, currentForm: lastForm, formPile };
-    dispatchContext(newForm);
+    dispatchContext({type: GO_BACK});
+    // const { currentForm: lastForm, formPile } = goBack(state);
+    // const newForm = { ...state, currentForm: lastForm, formPile };
+    // dispatchContext(newForm);
   };
 
   const renderForm = () => {

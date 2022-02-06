@@ -6,8 +6,8 @@ const FORM_4bis='form4bis';
 const FORM_5='form5';
 const FORM_FINAL='formFinal';
 
-const goBack = (formData) => {
-    const { formPile, currentForm } = formData;
+const goBack = (state) => {
+    const { formPile, currentForm } = state;
     if (formPile.length === 0) return {currentForm, formPile};
     const newPile = [...formPile];
     const lastForm = newPile.pop();

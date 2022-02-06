@@ -1,13 +1,14 @@
 import { DispatchContext, FormContext } from "context/dumpFormContext";
+import { saveForm } from "context/dumpFormContext/actions";
 import { FORM_4, FORM_4bis } from "helpers/automateHelper";
 import React, { useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
 import FormAction from "./FormAction";
 
 function DumpForm3({ goBack }) {
-  const form = useContext(FormContext);
+  const state = useContext(FormContext);
   const dispatchContext = useContext(DispatchContext);
-  const { currentForm, phone, hasPaimentInfo } = form;
+  const { currentForm, form: {phone, hasPaimentInfo}, animation } = state;
 
   const defaultValues = {
     phone,
@@ -23,16 +24,14 @@ function DumpForm3({ goBack }) {
   } = useForm({ defaultValues });
 
   const onSubmit = (data) => {
-    const newForm = { ...form, ...data };
-    newForm.formPile.push(currentForm);
-    newForm.currentForm = data.hasPaimentInfo;
-    dispatchContext(newForm);
+    saveForm(data, data.hasPaimentInfo, state, currentForm, dispatchContext);
   };
+
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-1/3 m-auto mt-32 flex flex-col p-5"
+      className={`w-1/3 m-auto mt-32 flex flex-col p-5 ${animation}`}
     >
       <label className="block text-left mb-5">
         <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
@@ -99,7 +98,7 @@ function DumpForm3({ goBack }) {
         )}
       </label>
 
-      <FormAction goBack={goBack} />
+      <FormAction goBack={goBack} currentForm={currentForm} />
     </form>
   );
 }
