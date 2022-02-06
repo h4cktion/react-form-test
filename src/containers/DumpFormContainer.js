@@ -5,6 +5,7 @@ import DumpForm4 from "components/DumpForms/DumpForm4";
 import DumpForm4bis from "components/DumpForms/DumpForm4bis";
 import DumpForm5 from "components/DumpForms/DumpForm5";
 import DumpFormFinal from "components/DumpForms/DumpFormFinal";
+import Stepper from "components/DumpForms/Stepper";
 import { DispatchContext, FormContext } from "context/dumpFormContext";
 import { GO_BACK } from "context/dumpFormContext/actionsType";
 import { FORM_1, FORM_2, FORM_3, FORM_4, FORM_4bis, FORM_5, FORM_FINAL, goBack } from "helpers/automateHelper";
@@ -43,7 +44,10 @@ function DumpFormContainer() {
         return <DumpForm1 goBack={goPreviewForm} />;
     }
   };
-  return <div className="text-slate-500">{renderForm()}</div>;
+  return <div className="text-slate-500">
+    <Stepper />
+    {renderForm()}
+    </div>;
 }
 
 export default DumpFormContainer;

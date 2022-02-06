@@ -1,3 +1,4 @@
+import { FORM_1 } from "helpers/automateHelper";
 import React, { createContext, useReducer } from "react";
 import reducer from "./reducer";
 
@@ -7,7 +8,7 @@ export const DispatchContext = createContext();
 function DumpFormContext(props) {
   const initialState = {
     formPile: [],
-    currentForm: "dumpForm1",
+    currentForm: FORM_1,
     animation: "animate-fade-in-down",
     form: {},
   };
