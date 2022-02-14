@@ -5,7 +5,7 @@ import reducer from "./reducer";
 export const FormContext = createContext();
 export const DispatchContext = createContext();
 
-function DumpFormContext(props) {
+function FormContextContainer(props) {
   const initialState = {
     formPile: [],
     currentForm: FORM_1,
@@ -24,4 +24,4 @@ function DumpFormContext(props) {
   );
 }
 
-export default DumpFormContext;
+export default FormContextContainer;

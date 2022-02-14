@@ -81,7 +81,7 @@ function SignUp({onSubmit, loading}) {
               <Spinner />
             )}
             <hr className="my-10"/>
-            <p className="text-neutral-500 text-sm">You can field dumb info, it's just for testing ;-)</p>
+            <p className="text-neutral-500 text-sm">You can field info, it's just for testing ;-)</p>
           </div>
         </form>
       </div>

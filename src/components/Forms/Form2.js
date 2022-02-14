@@ -1,11 +1,11 @@
-import { DispatchContext, FormContext } from "context/dumpFormContext";
-import { saveForm } from "context/dumpFormContext/actions";
+import { DispatchContext, FormContext } from "context/FormContext";
+import { saveForm } from "context/FormContext/actions";
 import { FORM_3 } from "helpers/automateHelper";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import FormAction from "./FormAction";
 
-function DumpForm2({ goBack }) {
+function Form2({ goBack }) {
   const {
     register,
     handleSubmit,
@@ -50,4 +50,4 @@ function DumpForm2({ goBack }) {
   );
 }
 
-export default DumpForm2;
+export default Form2;

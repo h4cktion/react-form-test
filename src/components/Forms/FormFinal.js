@@ -1,9 +1,8 @@
-// import { DispatchContext, FormContext } from "context/dumpFormContext";
-import { FormContext } from "context/dumpFormContext";
+import { FormContext } from "context/FormContext";
 import React, { useContext } from "react";
 import FormAction from "./FormAction";
 
-function DumpFormFinal({ goBack }) {
+function FormFinal({ goBack }) {
   const state = useContext(FormContext);
   const { anmation, currentForm } = state;
 
@@ -15,4 +14,4 @@ function DumpFormFinal({ goBack }) {
   );
 }
 
-export default DumpFormFinal;
+export default FormFinal;

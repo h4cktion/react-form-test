@@ -1,11 +1,11 @@
-import { DispatchContext, FormContext } from "context/dumpFormContext";
-import { saveForm } from "context/dumpFormContext/actions";
+import { DispatchContext, FormContext } from "context/FormContext";
+import { saveForm } from "context/FormContext/actions";
 import { FORM_4, FORM_4bis } from "helpers/automateHelper";
 import React, { useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
 import FormAction from "./FormAction";
 
-function DumpForm3({ goBack }) {
+function Form3({ goBack }) {
   const state = useContext(FormContext);
   const dispatchContext = useContext(DispatchContext);
   const { currentForm, form: {phone, hasPaimentInfo}, animation } = state;
@@ -103,4 +103,4 @@ function DumpForm3({ goBack }) {
   );
 }
 
-export default DumpForm3;
+export default Form3;

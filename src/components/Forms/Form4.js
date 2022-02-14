@@ -1,11 +1,11 @@
-import { DispatchContext, FormContext } from "context/dumpFormContext";
-import { saveForm } from "context/dumpFormContext/actions";
+import { DispatchContext, FormContext } from "context/FormContext";
+import { saveForm } from "context/FormContext/actions";
 import { FORM_5 } from "helpers/automateHelper";
 import React, { useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
 import FormAction from "./FormAction";
 
-function DumpForm4({ goBack }) {
+function Form4({ goBack }) {
   const state = useContext(FormContext);
   const dispatchContext = useContext(DispatchContext);
   const { currentForm, form:{movie} } = state;
@@ -59,4 +59,4 @@ function DumpForm4({ goBack }) {
   );
 }
 
-export default DumpForm4;
+export default Form4;

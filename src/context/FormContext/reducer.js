@@ -11,7 +11,6 @@ function reducer(state, action) {
     case SAVE_FORM:
       return { ...state, form: action.payload  };
     case GO_BACK:
-      console.log('state', state);
       const { currentForm, formPile } = goBack(state);
       return {...state, currentForm, formPile };
     case ADD_IN_HISTORY:

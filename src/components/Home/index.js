@@ -11,7 +11,7 @@ function Home() {
       <p>Hello, it's a little project to test Tailwind and react-hook-form. I also use react-router-dom.</p>
       <div className="flex w-1/2 mx-auto h-full justify-around items-center mt-16">
         <div className="h-56 w-56 rounded-lg relative bg-blue-700 text-white drop-shadow-lg">
-          Test my dumb SignUp
+          Test my SignUp
           <input
             type="button"
             value="TRY"
@@ -20,11 +20,11 @@ function Home() {
           />
         </div>
         <div className="h-56 w-56 bg-gray-100 relative drop-shadow-lg">
-          Test my dumb Form
+          Test my Form
           <input
             type="button"
             value="TRY"
-            onClick={() => navigate("dumpForm")}
+            onClick={() => navigate("form")}
             className="py-2 w-3/4 mx-auto absolute rounded-lg bg-white text-black bottom-2 left-7 cursor-pointer"
           />
         </div>

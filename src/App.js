@@ -2,8 +2,8 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import CustomFormContainer from "containers/CustomFormContainer";
 import Home from "components/Home";
-import DumpFormContainer from "containers/DumpFormContainer";
-import DumpFormContext from "context/dumpFormContext";
+import FormContainer from "containers/FormContainer";
+import FormContext from "context/FormContext";
 
 function App() {
   return (
@@ -12,11 +12,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="signup" element={<CustomFormContainer />} />
         <Route
-          path="dumpForm"
+          path="form"
           element={
-            <DumpFormContext>
-              <DumpFormContainer />
-            </DumpFormContext>
+            <FormContext>
+              <FormContainer />
+            </FormContext>
           }
         />
       </Routes>
